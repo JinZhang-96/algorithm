@@ -9,4 +9,7 @@ package com.zb.arraySort;
  */
 public class InsertSort {
 
+	/**
+	 *  ²åÈëÅÅĞòË¼Â·£º
+	 */
 }
