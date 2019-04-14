@@ -94,7 +94,7 @@ public class InsertSort {
 	**/
 	
 	public static void main(String[] args) {
-		int[] randomArray = Provider.getArray(100, 100); // 获取一个大小为30，最大值为100的乱序数组
+		int[] randomArray = Provider.getArray(10000, 100); // 获取一个大小为30，最大值为100的乱序数组
 		System.out.println("排序前：" + Provider.printArray(randomArray));
 		long startTime = System.nanoTime();
 		int[] data = InsertSort.sort(randomArray);
