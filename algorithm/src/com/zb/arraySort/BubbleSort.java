@@ -15,9 +15,12 @@ public class BubbleSort {
 	/**
 	 * 冒泡排序思路：一个乱序数组，通过数组的一个元素和它的下一个元素比较，
 	 * 如果它的下一个元素没有它的值大，就交换它俩的值，否则不交换。
-	 * 这样在数组的起点开始交换到数组末尾，就可以保证最后的元素就是这些元素中最大的一个。
+	 * 这样从数组的起点开始交换到数组末尾，就可以保证最后的元素就是这些元素中最大的一个。
 	 * 因为最开始的要交换的元素值是较小的，到最后要交换的值越来越大直到最大，看起来就想水中浮出的气泡，
-	 * 所以称为冒泡排序。 代码实现如下：
+	 * 所以称为冒泡排序。 
+	 * 其为最低级的排序算法， 比较次数为n*n, 交换次数为n*n, 效率最差， 不建议使用。
+	 * 
+	 * 代码实现如下：
 	 */
 	
 	
@@ -43,13 +46,13 @@ public class BubbleSort {
 	 
 	 
 	 public static void main(String[] args) {
-		int[] randomArray = Provider.getArray(2, 100);  // 获取一个大小为30， 最大值为100的乱序数组
+		int[] randomArray = Provider.getArray(100, 100);  // 获取一个大小为30， 最大值为100的乱序数组
 		System.out.println("排序前："+ Provider.printArray(randomArray));
 		long startTime = System.nanoTime();
 		int[] data = BubbleSort.sort(randomArray);
 		long endTime = System.nanoTime();
 		System.out.println("排序后："+ Provider.printArray(randomArray));
-		System.out.println("共交换" + data[0]+"次， 共排序"+data[1]+"次。" );
+		System.out.println("共交换" + data[0]+"次， 共比较"+data[1]+"次。" );
 		System.out.println("共用时："+Provider.getTime(startTime, endTime, ""));
 		
 	}
