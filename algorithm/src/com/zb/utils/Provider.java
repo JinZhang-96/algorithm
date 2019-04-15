@@ -11,9 +11,13 @@ public class Provider {
 
 	/**
 	 * 
-	 * @Title: getArray @Description: TODO(获取一个大小为${@param length}, 最大值为${@param
-	 * limite}的乱序数组 ) @param @param length @param @param limite @param @return
-	 * 设定文件 @return int[] 返回类型 @author zb @throws
+	 * @Title: getArray 
+	 * @Description: TODO(获取一个大小为${@param length}, 最大值为${@param limite}的乱序数组 ) 
+	 * @param length 
+	 * @param limite  
+	 * @return int[] 返回类型
+	 * @author zb 
+	 * @throws
 	 */
 	public static int[] getArray(int length, int limite) {
 		int[] randomArray = new int[length];
@@ -25,8 +29,13 @@ public class Provider {
 
 	/**
 	 * 
-	 * @Title: printArray @Description: TODO(输出数组的数据) @param @param
-	 * randomArray @param @return 设定文件 @return String 返回类型 @author zb @throws
+	 * @Title: printArray 
+	 * @Description: TODO(输出数组的数据) 
+	 * @param randomArray
+	 * @param @return 设定文件
+	 * @return String 返回类型
+	 *  @author zb 
+	 *  @throws
 	 */
 	public static String printArray(int[] randomArray) {
 
@@ -48,7 +57,7 @@ public class Provider {
 			value = (new Double(new Long(time).toString())) / Math.pow(10, 6) + "毫秒";
 			break;
 		case "us":
-			value = (new Double(new Long(time).toString())) / Math.pow(10, 3) + "毫秒";
+			value = (new Double(new Long(time).toString())) / Math.pow(10, 3) + "微秒";
 			break;
 		case "s":
 			value = (new Double(new Long(time).toString())) / Math.pow(10, 9) + "秒";

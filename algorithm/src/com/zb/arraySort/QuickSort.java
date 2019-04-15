@@ -53,7 +53,7 @@ public class QuickSort {
 		int start = left; // 记录枢纽点元素的位置
 		// 当left未和right相遇时，就继续下一轮交换
 		while(true) {
-			// 默认在数组的左侧先开始查找
+			// 默认在数组的右侧先开始查找
 			while(randomArray[right] > povit){ // 查找数组中比povit小的数组元素
 				data[1] += 1;
 				right--; 
