@@ -14,6 +14,7 @@ public class QuickSort {
 	/**
 	 * 快速排序思路：通过划分 对乱序数组划分为以枢纽点povit为中间点，左边数组的值小于枢纽点， 右边的值大于枢纽点的数组。
 	 * 直到划分的数组长度为1， 则该数组默认就是有序的， 停止数组的划分。
+	 * 交换时间复杂度n*logn，比较时间复杂度n*logn
 	 * 实现代码如下：
 	 */
 	
@@ -53,11 +54,12 @@ public class QuickSort {
 		int start = left; // 记录枢纽点元素的位置
 		// 当left未和right相遇时，就继续下一轮交换
 		while(true) {
-			// 默认在数组的右侧先开始查找
+			// 默认在数组的右侧先开始查找, 因为povit的位置为数组的始点， 所以可以肯定right--的过程中肯定或找到randomArray[right] <= povit的情况，所以可以去掉right>left的判断
 			while(randomArray[right] > povit){ // 查找数组中比povit小的数组元素
 				data[1] += 1;
 				right--; 
 			}
+			// 因为开始left指向povit， 所以left要先自增，不对povit进行交换
 			while(++left < right && randomArray[left] < povit) {
 				data[1] += 1;
 			};// 查找数组中比povit大的数组元素
@@ -73,6 +75,11 @@ public class QuickSort {
 			}
 			
 		}	
+		/* left与right已经相遇， 划分完成。无论left与right相遇，还是right与left相遇。
+		 * 都可以确定randomArray[right]是小于等于povit的。
+		 * 而right左边的都小于povit,右边的都大于povit
+		 * 
+		*/
 		randomArray[start] = randomArray[right];
 		randomArray[right] = povit;
 		data[0] += 1;
