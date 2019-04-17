@@ -69,6 +69,24 @@ public class Provider {
 		return value;
 	}
 	
+	public static String getTime(long time, String size) {
+		String value;
+		switch (size) {
+		case "ms":
+			value = (new Double(new Long(time).toString())) / Math.pow(10, 6) + "毫秒";
+			break;
+		case "us":
+			value = (new Double(new Long(time).toString())) / Math.pow(10, 3) + "微秒";
+			break;
+		case "s":
+			value = (new Double(new Long(time).toString())) / Math.pow(10, 9) + "秒";
+			break;
+		default:
+			value = time + "纳秒";
+			break;
+		}
+		return value;
+	}
 	/**
 	 * 深克隆一个对象
 	* @Title: clone

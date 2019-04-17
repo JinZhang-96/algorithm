@@ -10,7 +10,7 @@ import com.zb.utils.Provider;
  * @date 2019年4月11日 下午4:32:03
  *
  */
-public class InsertSort {
+public class InsertSort extends AbstractSort{
 
 	/**
 	 * 插入排序思路：一个乱序数组， 我们使数组是部分有序的， 在排序的开始， 我们认为数组的第一个元素就是那个部分有序的数组。然后选择有序
@@ -22,52 +22,33 @@ public class InsertSort {
 	 * 
 	 * 实现代码如下：
 	 */
-	
-	private static int[] randomArray;
-	
-	private static int[] data = {0,0};
+	public InsertSort() {
+		// TODO Auto-generated constructor stub
+		this.log.setName("插入排序");
+	}
 	
 
 	// 未使用2分查找的数组
-	public static void sort() {
+	public  void sort(int[] randomArray) {
 		for (int i = 1; i < randomArray.length; i++) {
 			int value = randomArray[i]; // 要插入有序数组的值
 			int end = i; // 记录要存放元素的位置
 			 //找到适当的插入位置， 如果要插入的值小于当前的值， 就把当前值向后移动一个位置
 			while(end > 0 && randomArray[end-1] > value) {
-				data[0] +=1;
-				data[1] +=1;
+				this.log.comparePlus();
+				this.log.swapPlus();
 				randomArray[end] = randomArray[end - 1];
 				end --;
 			}
-			data[0] +=1;
+			this.log.swapPlus();
 			randomArray[end] = value;
 		}
 	}
 	
-	
-	
-	// 未使用2分查找的数组
-		public static int[] sort(int[] randomArray) {
-			int data[] = {0,0};
-			for (int i = 1; i < randomArray.length; i++) {
-				int value = randomArray[i]; // 要插入有序数组的值
-				int end = i; // 记录要存放元素的位置
-				 //找到适当的插入位置， 如果要插入的值小于当前的值， 就把当前值向后移动一个位置
-				while(end > 0 && randomArray[end-1] > value) {
-					data[0] +=1;
-					data[1] +=1;
-					randomArray[end] = randomArray[end - 1];
-					end --;
-				}
-				data[0] +=1;
-				randomArray[end] = value;
-			}
-			return data;
-		}
+
 
 	// 使用2分查找
-	public static void binarySort() {
+	public  void binarySort(int[] randomArray) {
 		// 由数组的第2个元素到最后一个元素插入到有序数组中
 		for (int i = 1; i < randomArray.length; i++) {
 			int value = randomArray[i]; // 要插入有序数组的值
@@ -75,14 +56,14 @@ public class InsertSort {
 			int start = 0; // 有序数组的起点
 			int after = i - 1; //有序数组的末点 
 			 //找到适当的插入位置
-			int position = InsertSort.binarySearch(start, after,value);
+			int position = this.binarySearch(start, after,value, randomArray);
 			while(end > position) {
 				randomArray[end] = randomArray[end - 1];	
 				end--;
-				data[0] +=1;
+				this.log.swapPlus();
 			}
 			randomArray[position] = value;		
-			data[0] +=1;
+			this.log.swapPlus();
 		}		
 	}
 	
@@ -97,8 +78,8 @@ public class InsertSort {
 	* @author zb 
 	* @throws
 	 */
-	public static int binarySearch(int start, int end, int value){
-		data[1] += 1;
+	public  int binarySearch(int start, int end, int value, int[] randomArray){
+		this.log.comparePlus();
 		int mid = (start+end)/2 ; // 获取中间元素
 		// 如果中间元素等于待归序的元素， 就可以把待归序的元素插入到这个位置
 		if(randomArray[mid] == value)
@@ -109,32 +90,15 @@ public class InsertSort {
 			return randomArray[mid] > value? mid: mid + 1;
 		}		
 		// 如果中间元素大于待归序元素,在中间元素的左侧数组中查找该插入的位置,否则在中间元素的右侧数组中查找该插入的位置.
-		return randomArray[mid] > value? InsertSort.binarySearch(start, mid == start ? mid: mid - 1, value) // 因为有时候mid会等于start, 防止mid过小
-				: InsertSort.binarySearch(mid + 1, end, value);	
+		return randomArray[mid] > value? this.binarySearch(start, mid == start ? mid: mid - 1, value, randomArray) // 因为有时候mid会等于start, 防止mid过小
+				: this.binarySearch(mid + 1, end, value, randomArray);	
 	}
 	
 	
 	public static void main(String[] args) {
-		randomArray = Provider.getArray(1000, 1000); // 获取一个大小为30，最大值为100的乱序数组
-		int[] s = (int[]) Provider.clone(randomArray);
-		System.out.println("排序前：" + Provider.printArray(randomArray));
-		long startTime = System.nanoTime();
-		InsertSort.sort();
-		long endTime = System.nanoTime();
-		System.out.println("排序后：" + Provider.printArray(randomArray));
-		System.out.println("共交换" + data[0] + "次， 共比较" + data[1] + "次。");
-		System.out.println("共用时：" + Provider.getTime(startTime, endTime, ""));
-		
-		randomArray = s;
-		data[0] = 0; data[1] = 0;
-		System.out.println("排序前：" + Provider.printArray(randomArray));
-		startTime = System.nanoTime();
-		InsertSort.binarySort();
-		endTime = System.nanoTime();
-		System.out.println("排序后：" + Provider.printArray(randomArray));
-		System.out.println("共交换" + data[0] + "次， 共比较" + data[1] + "次。");
-		System.out.println("共用时：" + Provider.getTime(startTime, endTime, ""));
-		
+		int[] randomArray = Provider.getArray(1000, 1000); // 获取一个大小为30，最大值为100的乱序数组
+		InsertSort insertSort = new InsertSort();
+		System.out.println(insertSort.showSort(randomArray, "s", true));	
 	
 	}
 }
