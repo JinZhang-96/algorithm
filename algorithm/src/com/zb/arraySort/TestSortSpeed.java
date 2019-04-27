@@ -18,20 +18,33 @@ public class TestSortSpeed {
 		int[] randomArray2 = (int[]) Provider.clone(randomArray); 
 		int[] randomArray3 = (int[]) Provider.clone(randomArray); 
 		int[] randomArray4 = (int[]) Provider.clone(randomArray); 
+		int[] randomArray5 = (int[]) Provider.clone(randomArray); 
+		int[] randomArray6 = (int[]) Provider.clone(randomArray); 
 		
 		
 		Log log1 = new  BubbleSort().showSort(randomArray, "s", false);
+		System.out.println(log1);
 		Log log2 = new  SelectSort().showSort(randomArray1, "s", false);
+		System.out.println(log2);
 		Log log3 = new  InsertSort().showSort(randomArray2, "s", false);
+		System.out.println(log3);
 		Log log4 = new  ShellSort().showSort(randomArray3, "s", false);
+		System.out.println(log4);
 		Log log5 = new  QuickSort().showSort(randomArray4, "s", false);
-		
+		System.out.println(log5);
+		Log log6 = new  MergeSort().showSort(randomArray5, "s", false);
+		System.out.println(log6);
+		Log log7 = new  BucketSort().showSort(randomArray6, "s", false);
+		System.out.println(log7);
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(log1).append("\r\n")
+		buffer
+		.append(log1).append("\r\n")
 		.append(log2).append("\r\n")
 		.append(log3).append("\r\n")
 		.append(log4).append("\r\n")
-		.append(log5).append("\r\n");
+		.append(log5).append("\r\n")
+		.append(log6).append("\r\n")
+		.append(log7).append("\r\n");
 		
 		
 		File file = new File("F:\\test.txt");

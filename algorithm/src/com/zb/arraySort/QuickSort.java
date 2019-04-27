@@ -14,7 +14,7 @@ public class QuickSort extends AbstractSort{
 	/**
 	 * 快速排序思路：通过划分 对乱序数组划分为以枢纽点povit为中间点，左边数组的值小于枢纽点， 右边的值大于枢纽点的数组。
 	 * 直到划分的数组长度为1， 则该数组默认就是有序的， 停止数组的划分。
-	 * 交换时间复杂度O(n*logn)，比较时间复杂度O(n*logn)；
+	 * 交换时间复杂度O(n*log n)，比较时间复杂度O(n*log n)；
 	 * 如果数组为逆序时效率最差，交换时间复杂度和比较时间复杂度为O(n^2);可使用三数据项取中发消除这种影响，即取数组中间、头部、尾部三个数据项中中间大小的数据项为枢纽点
 	 * 实现代码如下：
 	 */
@@ -225,9 +225,9 @@ public class QuickSort extends AbstractSort{
 	
 	public static void main(String[] args) {
 			
-		int size = 10000;		
+		int size = 1000000;	
 		int[] randomArray = Provider.getArray(size, 1000);// 获取一个大小为30，最大值为100的乱序数组		
-		System.out.println(new QuickSort().showSort(randomArray, "s", true));
+		System.out.println(new QuickSort().showSort(randomArray, "s", false));
 	}
 
 }
